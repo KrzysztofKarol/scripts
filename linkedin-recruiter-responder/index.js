@@ -4,30 +4,28 @@
     if (e.ctrlKey) {
       /* English */
       if (e.key === "e") {
-        const innerHTML = `<p>
-Hi {{firstName}}!<br />
-<br />
-Thank you for your message.<br />
-Could you tell me more about <span id="select-me">requirements</span>?<br/>
-<br/>
-Best regards,<br/>
-Krzysztof Karol
-</p>
+        const innerHTML = `
+<p>Hi {{firstName}}!</p>
+<p><br /></p>
+<p>Thank you for your message.</p>
+<p>Could you tell me more about <span id="select-me">the requirements</span>?</p>
+<p><br/></p>
+<p>Best regards,</p>
+<p>Krzysztof Karol</p>
 `;
         insertMessage(innerHTML);
       }
 
       /* German */
       if (e.key === "d") {
-        const innerHTML = `<p>
-Grüezi {{firstName}}!<br />
-<br />
-Vielen Dank für Ihre Nachricht<br />
-Könnten Sie mir bitte etwas mehr über <span id="select-me">Voraussetzungen</span> schreiben?<br/>
-<br/>
-Mit freundlichen Grüssen<br/>
-Krzysztof Karol
-</p>
+        const innerHTML = `
+<p>Grüezi {{firstName}}!</p>
+<p><br /></p>
+<p>Vielen Dank für Ihre Nachricht</p>
+<p>Könnten Sie mir bitte etwas mehr über <span id="select-me">Voraussetzungen</span> schreiben?</p>
+<p><br/></p>
+<p>Mit freundlichen Grüssen</p>
+<p>Krzysztof Karol</p>
 `;
         insertMessage(innerHTML);
       }
@@ -48,10 +46,20 @@ Krzysztof Karol
   }
 
   function _getFirstName() {
-    return document
-      .getElementsByClassName("profile-card-one-to-one__profile-link")[0]
-      .innerHTML.trim()
-      .split(" ")[0];
+    const classNames = [
+      "profile-card-one-to-one__profile-link" /* From invitation */,
+      "msg-entity-lockup__entity-title" /* From messages */
+    ];
+
+    for (const className of classNames) {
+      const element = document.getElementsByClassName(className)[0];
+
+      if (element !== undefined) {
+        return element.innerHTML.trim().split(" ")[0];
+      }
+    }
+
+    return null;
   }
 
   function _setInnerHTML(innerHTML) {
