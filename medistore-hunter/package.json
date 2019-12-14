@@ -1,0 +1,20 @@
+{
+  "name": "medistore-hunter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Krzysztof Karol",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "node-telegram-bot-api": "^0.40.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
