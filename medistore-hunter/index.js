@@ -50,8 +50,8 @@ process.env["NTBA_FIX_319"] = 1;
   }
 
   async function getData({ day, month, year }) {
-    // return getDataFromServer({ day, month, year });
-    return getDataFromFile({ day, month, year });
+    return getDataFromServer({ day, month, year });
+    // return getDataFromFile({ day, month, year });
   }
 
   async function getDataFromServer({ day, month, year }) {
